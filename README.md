@@ -1,6 +1,7 @@
 # sublime-ora
 
 Package for sublime syntax highlighting the .ora files from Oracle.
+
 For example, the tnsnames.ora or the sqlnet.ora of an orace database show in some better way than without highlighting.
 
 ## Screenshots
@@ -9,7 +10,9 @@ For example, the tnsnames.ora or the sqlnet.ora of an orace database show in som
 
 ## Installation
 
-Installation through package control is recommended. It will handle updating your packages as they become available. To install, do the following.
+Installation through package control is recommended. It will handle updating your packages as they become available.
+
+To install, do the following.
 
 * In the Command Palette, enter Package Control: Install Package
 * Search for Oracle_ORA
