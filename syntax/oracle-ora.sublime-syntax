@@ -1,0 +1,49 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+name: ORA (Oracle)
+file_extensions:
+  - ora
+scope: text.ora
+
+contexts:
+  # The prototype context is prepended to all contexts but those setting
+  # meta_include_prototype: false.
+  prototype:
+    - include: comments
+
+  main:
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+    - include: keywords
+    - include: numbers
+    - include: strings
+
+  keywords:
+    # Keywords are if, else for and while.
+    # Note that blackslashes don't need to be escaped within single quoted
+    # strings in YAML. When using single quoted strings, only single quotes
+    # need to be escaped: this is done by using two single quotes next to each
+    # other.
+    - match: '([A-Za-z0-9_.]+)(\s*=)'
+      captures:
+        1: keyword.operator.assignment.ora
+        2: constant.string.ora
+
+  numbers:
+    - match: '\s*\b(-)?[0-9.]+\b'
+      scope: constant.numeric.ora
+
+  strings:
+    - match: '\s*[A-Za-z.-_][A-Za-z0-9.-_]+'
+      scope: constant.numeric.ora
+
+  comments:
+    # Comments begin with a '#' and finish at the end of the line.
+    - match: '\#'
+      scope: punctuation.definition.comment.ora
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: comment.line.double-slash.ora
+        - match: $\n?
+          pop: true
